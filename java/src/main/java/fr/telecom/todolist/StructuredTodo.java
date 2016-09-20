@@ -17,9 +17,6 @@ public class StructuredTodo extends TodoList {
 	@Override
 	public boolean load(String filename) {
 		ArrayList<String> lines = TodoList.readFile(filename);
-		TodoEntry todo = new TodoEntry();
-		boolean error = false;
-		int lineNumber = 0;
 
 		if (!lines.isEmpty() && lines.get(0).trim().isEmpty()) {
 			System.err.println(String.format("ERROR: file %s begins by an empty line", filename));
@@ -30,6 +27,10 @@ public class StructuredTodo extends TodoList {
 			System.err.println(String.format("ERROR: file %s should end by an empty line", filename));
 			return false;
 		}
+		
+		TodoEntry todo = new TodoEntry();
+		boolean error = false;
+		int lineNumber = 0;
 
 		for (String line : lines) {
 			lineNumber++;
