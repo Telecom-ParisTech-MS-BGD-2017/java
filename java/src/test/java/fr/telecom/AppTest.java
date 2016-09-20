@@ -1,4 +1,4 @@
-package fr.telecom-paristech;
+package fr.telecom;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
