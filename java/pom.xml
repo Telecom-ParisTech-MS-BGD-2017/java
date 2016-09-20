@@ -10,16 +10,69 @@
   <name>java</name>
   <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-javadoc-plugin -->
+		<plugin.maven.javadoc.version>2.10.4</plugin.maven.javadoc.version>
+		<!-- http://mvnrepository.com/artifact/org.codehaus.mojo/versions-maven-plugin -->
+		<plugin.exec.maven.version>1.3</plugin.exec.maven.version>
+		<!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+		<plugin.maven.compiler.version>2.4</plugin.maven.compiler.version>
+		<!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-eclipse-plugin -->
+		<plugin.maven.eclipse.version>2.10</plugin.maven.eclipse.version>
+		<!-- http://mvnrepository.com/artifact/org.apache.maven.plugins/maven-eclipse-plugin -->
+		<plugin.maven.dependency.version>2.10</plugin.maven.dependency.version>
+		<!-- http://mvnrepository.com/artifact/junit/junit -->
+		<junit.version>4.12</junit.version>
+	</properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+	<build>
+		<testSourceDirectory>src/test/java/fr/telecom/</testSourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${plugin.exec.maven.version}</version>
+				<configuration>
+					<mainClass>fr.telecom.App</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${plugin.maven.compiler.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${plugin.maven.javadoc.version}</version>
+				<configuration>
+					<outputDirectory>src/</outputDirectory>
+					<reportOutputDirectory>src/</reportOutputDirectory>
+					<destDir>doc</destDir>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
 </project>
+
